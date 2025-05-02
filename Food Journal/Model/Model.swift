@@ -5,13 +5,14 @@
 //  Created by Billie H on 01/05/25.
 //
 
-import Foundation
+import SwiftUI
 @Observable
 class Model {
     let url = URL.documentsDirectory.appending(path: "Items")
     var items : [Item] = []{
         didSet{save()}
     }
+    var path = NavigationPath()
     
     init() {
         load()
@@ -33,3 +34,4 @@ class Model {
         }
     }
 }
+let model = Model()

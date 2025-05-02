@@ -10,6 +10,7 @@ import PhotosUI
 struct ItemView:View {
     @State var item : Item
     @State private var photoItem : PhotosPickerItem?
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack{
             PhotosPicker(selection: $photoItem){
@@ -32,8 +33,26 @@ struct ItemView:View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Done", action: done)
+            }
+        }
+    }
+    init(item: Item) {
+        _item = State(initialValue: item)
+    }
+    func done(){
+        if !model.items.contains(item){
+            model.items.append(item)
+        }
+        model.save()
+        dismiss()
     }
 }
 #Preview {
-    ItemView(item: .example)
+    NavigationStack{
+        ItemView(item: .example)
+    }
 }

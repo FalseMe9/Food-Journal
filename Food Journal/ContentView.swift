@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Bindable var m = model
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack(path: $m.path){
+            List{
+                ForEach(m.items){
+                    ItemCell(item: $0)
+                }
+                .onDelete(perform: delete)
+            }
+            .navigationTitle("Food Journal")
+            .toolbar{
+                Button("", systemImage: "plus", action: plus)
+            }
+            .navigationDestination(for: Item.self, destination: ItemView.init)
         }
-        .padding()
+    }
+    func plus(){
+        let new = Item(description: "")
+        m.path.append(new)
+    }
+    func delete(at indexSet: IndexSet){
+        m.items.remove(atOffsets: indexSet)
     }
 }
 

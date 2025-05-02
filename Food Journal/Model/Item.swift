@@ -8,7 +8,8 @@
 import SwiftUI
 import UIKit
 
-struct Item: Identifiable, Codable {
+@Observable
+class Item: Identifiable, Hashable, Codable {
     var id : String = UUID().uuidString
     var description : String = ""
     var data : Data?
@@ -36,5 +37,16 @@ struct Item: Identifiable, Codable {
     init(description : String="", image : UIImage?){
         self.description = description
         self.image = image
+    }
+    enum CodingKeys: String, CodingKey {
+        case _id = "id"
+        case _description = "description"
+        case _data = "data"
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        lhs.id == rhs.id
     }
 }

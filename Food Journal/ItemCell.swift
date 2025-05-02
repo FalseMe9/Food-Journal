@@ -19,6 +19,9 @@ struct ItemCell: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 20)
         }
+        .onTapGesture {
+            model.path.append(item)
+        }
     }
 }
 
