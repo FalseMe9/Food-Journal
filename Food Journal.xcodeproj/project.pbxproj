@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E073CA582DC5AF7A00BB1D52 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073CA572DC5AF7A00BB1D52 /* ImagePicker.swift */; };
+		E073CA5A2DC5B9E400BB1D52 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073CA592DC5B9E400BB1D52 /* SplashScreen.swift */; };
 		E08A82352DC3604600012FAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A82322DC3604600012FAA /* ContentView.swift */; };
 		E08A82362DC3604600012FAA /* FoodJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A82332DC3604600012FAA /* FoodJournalApp.swift */; };
 		E08A82372DC3604600012FAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E08A82312DC3604600012FAA /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E073CA572DC5AF7A00BB1D52 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E073CA592DC5B9E400BB1D52 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		E08A821D2DC35FDD00012FAA /* taskMana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskMana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08A82312DC3604600012FAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E08A82322DC3604600012FAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,9 +63,11 @@
 			children = (
 				E08A82312DC3604600012FAA /* Assets.xcassets */,
 				E08A82322DC3604600012FAA /* ContentView.swift */,
+				E073CA592DC5B9E400BB1D52 /* SplashScreen.swift */,
 				E08A82332DC3604600012FAA /* FoodJournalApp.swift */,
 				E08A82382DC3606400012FAA /* ItemView.swift */,
 				E08A823A2DC3607000012FAA /* ItemCell.swift */,
+				E073CA572DC5AF7A00BB1D52 /* ImagePicker.swift */,
 				E08A823C2DC360BD00012FAA /* Model */,
 			);
 			path = "Food Journal";
@@ -148,9 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E073CA5A2DC5B9E400BB1D52 /* SplashScreen.swift in Sources */,
 				E08A823E2DC360C600012FAA /* Model.swift in Sources */,
 				E08A823B2DC3607000012FAA /* ItemCell.swift in Sources */,
 				E08A82352DC3604600012FAA /* ContentView.swift in Sources */,
+				E073CA582DC5AF7A00BB1D52 /* ImagePicker.swift in Sources */,
 				E08A82392DC3606400012FAA /* ItemView.swift in Sources */,
 				E08A82402DC360CB00012FAA /* Item.swift in Sources */,
 				E08A82362DC3604600012FAA /* FoodJournalApp.swift in Sources */,
@@ -292,6 +300,7 @@
 				DEVELOPMENT_TEAM = K3F94788LV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use camera to take photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -323,6 +332,7 @@
 				DEVELOPMENT_TEAM = K3F94788LV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use camera to take photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

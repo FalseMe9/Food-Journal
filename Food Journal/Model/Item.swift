@@ -22,12 +22,17 @@ class Item: Identifiable, Hashable, Codable {
             data = newValue?.pngData()
         }
     }
+    @MainActor
     var shownImage : Image{
-        if let image{return Image(uiImage: image)}
-        else{return Image("camera")}
+        get{
+            if let image{return Image(uiImage: image)}
+            else{return Image(systemName: "photo.fill")}
+        }set{
+           image = ImageRenderer(content: newValue).uiImage
+        }
     }
     static var example : Item{
-        let image = UIImage(systemName: "camera")
+        let image = UIImage(systemName: "photo.fill")
         return Item(description: "Test", image: image)
     }
     init(description: String="", data: Data? = nil) {

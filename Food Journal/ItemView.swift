@@ -9,29 +9,31 @@ import SwiftUI
 import PhotosUI
 struct ItemView:View {
     @State var item : Item
-    @State private var photoItem : PhotosPickerItem?
+    @State var sourceType : UIImagePickerController.SourceType = .photoLibrary
+    @State private var showSheet = false
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack{
-            PhotosPicker(selection: $photoItem){
-                item.shownImage
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-                
+            item.shownImage
+                .resizable()
+                .scaledToFit()
+                .frame(minWidth: 0, maxWidth: .infinity)
+            HStack{
+                Button("Camera"){
+                    sourceType = .camera
+                    showSheet = true
+                }
+                Button("Picture"){
+                    sourceType = .photoLibrary
+                    showSheet = true
+                }
             }
             TextEditor(text: $item.description)
         }
         .padding(5)
-        .onChange(of: photoItem){
-            Task{
-                do{
-                    let image = try await photoItem?.loadTransferable(type: Image.self)
-                    item.image = ImageRenderer(content: image).uiImage
-                }catch{
-                    print(error.localizedDescription)
-                }
-            }
+        .sheet(isPresented: $showSheet){
+            ImagePicker(sourceType: sourceType, showImagePicker: $showSheet, image: $item.shownImage)
+                .ignoresSafeArea()
         }
         .navigationBarBackButtonHidden()
         .toolbar {

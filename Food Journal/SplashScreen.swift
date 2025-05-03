@@ -8,8 +8,34 @@
 import SwiftUI
 
 struct SplashScreen: View {
+    @State private var show = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if show{
+            ContentView()
+        }else{
+            Image(.photoWallpaper)
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+                .transition(.move(edge: .bottom))
+                .onTapGesture {
+                    withAnimation(.easeInOut.speed(0.3)){
+                        show = true
+                    }
+                }
+                .onAppear{
+                    Task{
+                        do{
+                            try await Task.sleep(for: .seconds(3))
+                            withAnimation(.easeInOut.speed(0.3)){
+                                show = true
+                            }
+                        }catch{
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+        }
     }
 }
 
